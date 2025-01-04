@@ -1,3 +1,10 @@
+<style>
+.item {
+  margin-bottom: 20px;
+}
+</style>
+
+
 <script setup>
 import {ref, onMounted} from 'vue';
 
@@ -32,7 +39,12 @@ const holidays = ref([
     name: '中秋节和国庆节',
     date: '2025-10-01',
     endDate: '2025-10-08'
-  }
+  },
+  {
+    name: '元旦',
+    date: '2026-01-01',
+    endDate: '2026-01-01'
+  },
 ])
 
 onMounted(() => {
@@ -230,7 +242,7 @@ function calcWages(today) {
 </script>
 
 <template>
-  <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+  <div style="display: flex; justify-content: space-around; flex-wrap: wrap; width: 80vw; margin: auto; min-width: 650px; max-width: 1200px;">
     <div class="flex gap-6" style="margin-bottom: 30px; color: #f2f5e3;">
       <div>
         <span class="countdown font-mono text-4xl">
@@ -271,107 +283,112 @@ function calcWages(today) {
       </div>
     </div>
 
-    <div style="display: flex; justify-content: space-around;">
-
-      <div class="card bg-base-100 w-96 shadow-xl" style="margin-right: 10px;">
-        <div class="card-body items-center text-center" style="padding: 20px 32px;">
-          <h1 class="card-title">{{ holidayCountDown.title }}</h1>
-          <!-- 倒计时开始 -->
-          <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+    <div class="flex flex-wrap" style="width: 100%; justify-content: space-around;">
+      <div>
+        <div class="card bg-base-100 w-96 shadow-xl item">
+          <div class="card-body items-center text-center">
+            <h1 class="card-title">{{ holidayCountDown.title }}</h1>
+            <!-- 倒计时开始 -->
+            <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
          <span :style="{ '--value': holidayCountDown.day}"></span>
         </span>
-              天
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                天
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': holidayCountDown.hour}"></span>
         </span>
-              时
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                时
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': holidayCountDown.minute}"></span>
         </span>
-              分
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                分
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': holidayCountDown.second}"></span>
         </span>
-              秒
+                秒
+              </div>
             </div>
+            <!-- 倒计时结束 -->
           </div>
-          <!-- 倒计时结束 -->
         </div>
       </div>
 
-      <div class="card bg-base-100 w-96 shadow-xl" style="margin-right: 10px;">
-        <div class="card-body items-center text-center" style="padding: 20px 32px;">
-          <h1 class="card-title">{{ weekendCountDown.title }}</h1>
-          <!-- 倒计时开始 -->
-          <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+      <div>
+        <div class="card bg-base-100 w-96 shadow-xl item">
+          <div class="card-body items-center text-center">
+            <h1 class="card-title">{{ weekendCountDown.title }}</h1>
+            <!-- 倒计时开始 -->
+            <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
          <span :style="{ '--value': weekendCountDown.day}"></span>
         </span>
-              天
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                天
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': weekendCountDown.hour}"></span>
         </span>
-              时
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                时
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': weekendCountDown.minute}"></span>
         </span>
-              分
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                分
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': weekendCountDown.second}"></span>
         </span>
-              秒
+                秒
+              </div>
             </div>
+            <!-- 倒计时结束 -->
           </div>
-          <!-- 倒计时结束 -->
         </div>
       </div>
 
-      <div class="card bg-base-100 w-96 shadow-xl">
-        <div class="card-body items-center text-center" style="padding: 20px 32px;">
-          <h1 class="card-title">{{ wagesCountDown.title }}</h1>
-          <!-- 倒计时开始 -->
-          <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+      <div>
+        <div class="card bg-base-100 w-96 shadow-xl item">
+          <div class="card-body items-center text-center">
+            <h1 class="card-title">{{ wagesCountDown.title }}</h1>
+            <!-- 倒计时开始 -->
+            <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
          <span :style="{ '--value': wagesCountDown.day}"></span>
         </span>
-              天
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                天
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': wagesCountDown.hour}"></span>
         </span>
-              时
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                时
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': wagesCountDown.minute}"></span>
         </span>
-              分
-            </div>
-            <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
+                分
+              </div>
+              <div class="bg-neutral rounded-box text-neutral-content flex flex-col p-2">
         <span class="countdown font-mono text-5xl">
           <span :style="{ '--value': wagesCountDown.second}"></span>
         </span>
-              秒
+                秒
+              </div>
             </div>
+            <!-- 倒计时结束 -->
           </div>
-          <!-- 倒计时结束 -->
         </div>
       </div>
 
